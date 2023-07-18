@@ -31,6 +31,7 @@ export default class ApiClient {
     callback = undefined
   ) {
     try {
+      console.log("Base Url:", baseUrl);
       // try to make the request
       const res = await axios({
         method,
@@ -204,6 +205,10 @@ export default class ApiClient {
       return {};
     }
   }
+  async getOverview() {
+    return await this.authenticatedCall("get", "/overview");
+  }
+
   async addPlant(plant) {
     return await this.authenticatedCall(
       "post",
